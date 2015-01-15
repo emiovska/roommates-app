@@ -34,7 +34,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','f
                 abstract: true,
                 templateUrl: "templates/tabs.html"
             })
-
             // Each tab has its own nav history stack:
             .state('tab.chats', {
                 url: '/chats',
@@ -63,7 +62,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','f
                         controller: 'AccountCtrl'
                     }
                 }
-            });
+            })
+
+            .state('signUp', {
+                url: '/signUp',
+                templateUrl: 'templates/signUp.html',
+                controller: 'AccountCtrl'
+            }) ;
+
+
+
+
+
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/roommates');
