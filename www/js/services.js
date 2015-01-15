@@ -3,6 +3,17 @@ angular.module('starter.services', [])
     .factory('fireBaseData', function($firebase) {
         var ref = new Firebase("https://shining-fire-7395.firebaseio.com/")
         var refRoomMates = new Firebase("https://shining-fire-7395.firebaseio.com/roommatesExpenses");
+        var firstTime=true;
+        refRoomMates.endAt().limit(1).on('child_added', function(dataSnapshot,prevChildName) {
+           if(dataSnapshot.val().by=== ref.getAuth().password.email)
+              if(firstTime==false) {
+
+                console.log(dataSnapshot.val());
+              }
+
+            firstTime=false;
+
+        });
         return {
             ref: function() {
                 return ref;
