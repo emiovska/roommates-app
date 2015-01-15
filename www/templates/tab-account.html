@@ -1,15 +1,17 @@
-<ion-view view-title="Account">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-toggle">
-        Enable Friends
-        <label class="toggle">
-          <input type="checkbox" ng-model="settings.enableFriends">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
-        </label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+<ion-view title="Account">
+    <ion-content>
+        <div class="list" ng-show="showLoginForm">
+            <label class="item item-input">
+                <span class="input-label">Email</span><input type="text" ng-model="mail"/>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span><input type="password" ng-model="password"/>
+            </label>
+            <button class="button button-block button-positive" ng-click="login(mail, password)">Login</button>
+        </div>
+        <div class="card" ng-hide="showLoginForm">
+            <div class="item item-text-wrap">You are logged in as {{user.password.email}}</div>
+        </div>
+        <button class="button button-stable" ng-click="logout()" ng-hide="showLoginForm">Logout</button>
+    </ion-content>
 </ion-view>
