@@ -1,28 +1,37 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
-})
+    .controller('ChatsCtrl', function ($scope, Chats) {
+//        $scope.chats = Chats.all();
+//        $scope.remove = function (chat) {
+//            Chats.remove(chat);
+//        }
+    })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
 
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
-})
+    .controller('RoommatesCtrl', function($scope, fireBaseData, $firebase) {
+        $scope.expenses = $firebase(fireBaseData.refRoomMates()).$asArray();
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
-})
+        $scope.addExpense = function(e) {
+            $scope.expenses.$add({
+                by: 'mail',
+                label: $scope.label,
+                cost: $scope.cost
+            });
+            $scope.label = "";
+            $scope.cost = 0;
+        };
+        $scope.getTotal = function () {
+            var i, rtnTotal = 0;
+            for (i = 0; i < $scope.expenses.length; i = i + 1) {
+                rtnTotal = rtnTotal + $scope.expenses[i].cost;
+            }
+            return rtnTotal;
+        };
+    })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+    .controller('AccountCtrl', function ($scope) {
+       $scope.settings = {
+            enableFriends: true
+        };
+    });

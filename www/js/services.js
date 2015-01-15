@@ -1,5 +1,19 @@
 angular.module('starter.services', [])
 
+    .factory('fireBaseData', function($firebase) {
+        var ref = new Firebase("https://shining-fire-7395.firebaseio.com/"),
+            //refExpenses = new Firebase("https://luminous-fire-3429.firebaseio.com/expenses"),
+            refRoomMates = new Firebase("https://shining-fire-7395.firebaseio.com/roommatesExpenses");
+        return {
+            ref: function() {
+                return ref;
+            },
+            refRoomMates: function() {
+                return refRoomMates;
+            }
+        }
+    })
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
