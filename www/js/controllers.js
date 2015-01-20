@@ -1,8 +1,23 @@
 angular.module('starter.controllers', [])
 
 
-    .controller('ChatsCtrl', function ($scope, Chats) {
-//        $scope.chats = Chats.all();
+    .controller('ChatsCtrl', function ($scope, Chat,$ionicScrollDelegate,$timeout) {
+
+        $timeout( function(){
+            $ionicScrollDelegate.scrollBottom();
+            console.log("contoller timeout");
+        },100);
+        $scope.messages = Chat.allMessages();
+
+        $scope.sendNewMessage=function(e) {
+            if($scope.message!="")
+                Chat.createMessage("Elena",$scope.message);
+            $scope.message='';
+
+        };
+
+
+
 //        $scope.remove = function (chat) {
 //            Chats.remove(chat);
 //        }
@@ -10,10 +25,10 @@ angular.module('starter.controllers', [])
 
 
     .controller('RoommatesCtrl', function ($scope, fireBaseData, $firebase) {
-        console.log("roommatesCtlr");
+       // console.log(fireBaseData.getAuthUser().uid);
         $scope.expenses = $firebase(fireBaseData.refRoomMates()).$asArray();
+        //console.log($scope.expenses);
         $scope.user = fireBaseData.ref().getAuth();
-
         $scope.addExpense = function (e) {
             $scope.expenses.$add({
                 by: $scope.user.password.email,
