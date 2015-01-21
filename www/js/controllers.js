@@ -3,14 +3,13 @@ angular.module('starter.controllers', [])
 
     .controller('ChatsCtrl', function ($scope, Chat,$ionicScrollDelegate,$timeout) {
 
-        $timeout( function(){
-            $ionicScrollDelegate.scrollBottom();
-            console.log("contoller timeout");
-        },100);
+//        $timeout( function(){
+//            $ionicScrollDelegate.scrollBottom();
+//            console.log("contoller timeout");
+//        },100);
         $scope.messages = Chat.allMessages();
 
         $scope.sendNewMessage=function(e) {
-            if($scope.message!="")
                 Chat.createMessage("Elena",$scope.message);
             $scope.message='';
 
@@ -32,7 +31,7 @@ angular.module('starter.controllers', [])
         $scope.addExpense = function (e) {
             $scope.expenses.$add({
                 by: $scope.user.password.email,
-                label: $scope.label,
+                label: $scope.label.trim(),
                 cost: $scope.cost
             });
             $scope.label = "";

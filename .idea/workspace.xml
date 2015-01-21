@@ -2,24 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" name="Default" comment="">
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\js\angular-ui\angular-ui-router.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\js\angular-ui\angular-ui-router.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\js\angular\angular-animate.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\js\angular\angular-animate.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\js\angular\angular-resource.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\js\angular\angular-resource.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\js\angular\angular-sanitize.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\js\angular\angular-sanitize.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\js\angular\angular.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\js\angular\angular.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\lib\ionic\version.json" afterPath="" />
+      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\templates\chat-detail.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/roomiesExpensesApp.iml" afterPath="$PROJECT_DIR$/.idea/roomiesExpensesApp.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/services.js" afterPath="$PROJECT_DIR$/www/js/services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tab-roommates.html" afterPath="$PROJECT_DIR$/www/templates/tab-roommates.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tabs.html" afterPath="$PROJECT_DIR$/www/templates/tabs.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\templates\tab-chats.html" afterPath="$PROJECT_DIR$/www/templates/tab-chat.html" />
     </list>
     <ignored path="roomiesExpensesApp.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421771842175" ignored="false" />
-    <file path="/tabs.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421321935967" ignored="false" />
+    <file path="/Dummy.txt" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421799248038" ignored="false" />
+    <file path="/tabs.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421802213552" ignored="false" />
     <file path="/a.dummy" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421321542213" ignored="false" />
     <file path="/app.js" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421340235354" ignored="false" />
-    <file path="/tab-roommates.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421324908377" ignored="false" />
+    <file path="/tab-roommates.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421802508693" ignored="false" />
     <file path="/tab-chats.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421324995711" ignored="false" />
     <file path="/index.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421325369303" ignored="false" />
-    <file path="/controllers.js" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421784494094" ignored="false" />
+    <file path="/controllers.js" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421802484302" ignored="false" />
     <file path="/a.js" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421326483313" ignored="false" />
     <file path="/services.js" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421784752621" ignored="false" />
     <file path="/tab-account.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421342121328" ignored="false" />
@@ -28,7 +42,7 @@
     <file path="/tab-twotabs.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421339045819" ignored="false" />
     <file path="/tab-account-login.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421340219272" ignored="false" />
     <file path="/signUp.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421343152149" ignored="false" />
-    <file path="/tab-chat.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421783976036" ignored="false" />
+    <file path="/tab-chat.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421787788180" ignored="false" />
     <file path="/style.css" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421778770384" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,19 +63,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+      <file leaf-file-name="tab-roommates.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/tab-roommates.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="488" selection-end="488" vertical-scroll-proportion="0.45535713">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="27" selection-start="1122" selection-end="1122" vertical-scroll-proportion="0.0">
+            <state line="4" column="16" selection-start="195" selection-end="195" vertical-scroll-proportion="-2.6153846">
               <folding />
             </state>
           </provider>
@@ -70,25 +75,70 @@
       <file leaf-file-name="tab-chat.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/tab-chat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="107" selection-start="1168" selection-end="1192" vertical-scroll-proportion="-12.038462">
+            <state line="14" column="46" selection-start="561" selection-end="561" vertical-scroll-proportion="-4.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/css/style.css">
+      <file leaf-file-name="tab-account.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/tab-account.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="20" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+            <state line="17" column="76" selection-start="940" selection-end="944" vertical-scroll-proportion="-11.115385">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tab-roommates.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/tab-roommates.html">
+      <file leaf-file-name="signUp.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/signUp.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="33" selection-start="673" selection-end="673" vertical-scroll-proportion="-10.461538">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="46" selection-start="324" selection-end="324" vertical-scroll-proportion="0.060714286">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tabs.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/tabs.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="30" selection-start="229" selection-end="229" vertical-scroll-proportion="-1.6666666">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="23" selection-start="1044" selection-end="1051" vertical-scroll-proportion="-6.1538463">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="35" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="16" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -112,9 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/www/templates/tab-roommates.html" />
-        <option value="$PROJECT_DIR$/www/templates/tab-chats.html" />
-        <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/templates/tab-signUp.html" />
         <option value="$PROJECT_DIR$/www/templates/tab-login.html" />
         <option value="$PROJECT_DIR$/www/templates/tab-twotabs.html" />
@@ -122,12 +169,15 @@
         <option value="$PROJECT_DIR$/www/templates/tab-account-login.html" />
         <option value="$PROJECT_DIR$/www/templates/tab-account.html" />
         <option value="$PROJECT_DIR$/www/templates/signUp.html" />
-        <option value="$PROJECT_DIR$/www/templates/tabs.html" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
         <option value="$PROJECT_DIR$/www/templates/tab-chat.html" />
-        <option value="$PROJECT_DIR$/www/js/controllers.js" />
+        <option value="$PROJECT_DIR$/bower.json" />
+        <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/js/services.js" />
+        <option value="$PROJECT_DIR$/www/templates/tabs.html" />
+        <option value="$PROJECT_DIR$/www/js/controllers.js" />
+        <option value="$PROJECT_DIR$/www/templates/tab-roommates.html" />
       </list>
     </option>
   </component>
@@ -229,24 +279,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="roomiesExpensesApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="roomiesExpensesApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -374,110 +406,103 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/templates/tab-account.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="87" selection-start="770" selection-end="770" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/hooks/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/ionic.app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/ionic/css/ionic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3146" column="43" selection-start="82459" selection-end="82463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="48" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="13" selection-start="708" selection-end="814" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="14" selection-start="2694" selection-end="2694" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/signUp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="39" selection-start="632" selection-end="632" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/tab-account.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="87" selection-start="770" selection-end="770" vertical-scroll-proportion="0.0">
+        <state line="28" column="35" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="23" selection-start="1044" selection-end="1051" vertical-scroll-proportion="-7.076923" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/chat-detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="282" selection-end="489" vertical-scroll-proportion="0.4473684" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/signUp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="39" selection-start="632" selection-end="632" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/tab-account.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="76" selection-start="940" selection-end="944" vertical-scroll-proportion="-5.6666665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/tabs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="17" selection-start="656" selection-end="656" vertical-scroll-proportion="-9.807693">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="29" selection-start="1685" selection-end="1685" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="20" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/tab-chat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="107" selection-start="1168" selection-end="1192" vertical-scroll-proportion="-12.038462">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/tab-roommates.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="33" selection-start="673" selection-end="673" vertical-scroll-proportion="-10.461538">
+        <state line="27" column="23" selection-start="1044" selection-end="1051" vertical-scroll-proportion="-6.1538463">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="27" selection-start="1122" selection-end="1122" vertical-scroll-proportion="0.0">
+        <state line="31" column="16" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/tab-chat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="46" selection-start="561" selection-end="561" vertical-scroll-proportion="-4.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/tabs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="30" selection-start="229" selection-end="229" vertical-scroll-proportion="-1.6666666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/tab-account.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="76" selection-start="940" selection-end="944" vertical-scroll-proportion="-11.115385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/signUp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/tab-roommates.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="16" selection-start="195" selection-end="195" vertical-scroll-proportion="-2.6153846">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="488" selection-end="488" vertical-scroll-proportion="0.45535713">
+        <state line="9" column="46" selection-start="324" selection-end="324" vertical-scroll-proportion="0.060714286">
           <folding />
         </state>
       </provider>
