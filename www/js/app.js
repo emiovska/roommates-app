@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','firebase'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','firebase','ui.bootstrap'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -64,12 +64,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','f
                     }
                 }
             })
-
             .state('signUp', {
                 url: '/signUp',
                 templateUrl: 'templates/signUp.html',
                 controller: 'AccountCtrl'
-            }) ;
+            })
+            .state('createRoom', {
+                url: '/createRoom',
+                templateUrl: 'templates/createRoom.html',
+                controller: 'CreateRoomCtrl'
+            })
+        ;
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/roommates');

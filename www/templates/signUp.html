@@ -2,15 +2,18 @@
     <ion-content>
             <div class="list">
                 <label class="item item-input">
+                    <span class="input-label">Full name</span><input type="text" ng-model="name"/>
+                </label>
+                <label class="item item-input">
                     <span class="input-label">Email</span><input type="text" ng-model="mail"/>
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Password</span><input type="password" ng-model="password"/>
                 </label>
-                <button class="button button-block button-assertive" ng-click="signUp(mail, password)">Sign up</button>
+                <button class="button button-block button-assertive" ng-click="signUp(name,mail, password)">Sign up</button>
             </div>
             <div class="card">
-            <p>  {{infoMessage}}    </p>
+            <p>  {{infoMessage}} </p>
             </div>
 
     </ion-content>

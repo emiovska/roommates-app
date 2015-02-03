@@ -7,11 +7,12 @@ angular.module('starter.controllers', [])
 //            $ionicScrollDelegate.scrollBottom();
 //            console.log("contoller timeout");
 //        },100);
+        console.log("chat contoller");
         $scope.messages = Chat.allMessages();
 
         $scope.sendNewMessage=function(e) {
                 Chat.createMessage("Elena",$scope.message);
-            $scope.message='';
+                $scope.message='';
 
         };
 
@@ -31,7 +32,7 @@ angular.module('starter.controllers', [])
         $scope.addExpense = function (e) {
             $scope.expenses.$add({
                 by: $scope.user.password.email,
-                label: $scope.label.trim(),
+                label: $scope.label,
                 cost: $scope.cost
             });
             $scope.label = "";
@@ -48,11 +49,9 @@ angular.module('starter.controllers', [])
         };
     })
 
-    .controller('AccountCtrl', function ($scope, fireBaseData) {
+    .controller('AccountCtrl', function ($scope, fireBaseData, Users,$ionicModal) {
         $scope.loginForm = true;
-        $scope.signUpForm = false;
         $scope.showLoginForm = false; //Checking if user is logged in
-        $scope.showSignUpForm = true;
 
         $scope.user = fireBaseData.ref().getAuth();
         if (!$scope.user) {
@@ -76,28 +75,74 @@ angular.module('starter.controllers', [])
         };
 
         //Sign up methods
-        $scope.signUp = function (mail, password) {
+        $scope.signUp = function (name, mail, password) {
             var ref = fireBaseData.ref();
             ref.createUser({
                 email: mail,
                 password: password
             }, function (error) {
                 if (error === null) {
-                    $scope.infoMessage="User created successfully";
+                     //first sign in to get UID
+                    fireBaseData.ref().authWithPassword({
+                        email: mail,
+                        password: password
+                    }, function (error, authData) {
+                        if (error === null) {
+                            Users.createUser(name, authData.uid);
+                            fireBaseData.ref().unauth();
+                        }
+                    });
+
+                $scope.infoMessage="User created successfully";
                 } else {
                     $scope.infoMessage=error.message;
-
                 }
-
                 $scope.$apply();
             });
 
         };
 
+        $ionicModal.fromTemplateUrl('templates/notificationPanel.html', {
+            scope: $scope,
+            animation: 'slide-in-left'
+        }).then(function(modal) {
+                $scope.modal = modal;
+            });
+
+        $scope.showNotificationPanel= function() {
+            console.log("open notifi...");
+            $scope.modal.show();
+        };
 
         // Logout method
         $scope.logout = function () {
             fireBaseData.ref().unauth();
             $scope.showLoginForm = true;
         };
+    })
+    .controller('CreateRoomCtrl', function ($scope, Users, ChatRooms) {
+       $scope.registerUsers=[];
+       $scope.users =Users.allUsers() ;
+
+        $scope.addItem=function(registerUser){
+            $scope.registerUsers.push(registerUser);
+        }
+
+        $scope.delete=function(index){
+            $scope.registerUsers.splice(index, 1);
+        }
+
+        $scope.createRoom=function(roomName) {
+            ChatRooms.createChatRoom(roomName);
+             for(var i=0;i<$scope.registerUsers.length;i++) {
+                 var user=$scope.registerUsers[i];
+                 Users.createRoomInvitation(roomName,user.uid);
+             }
+
+            $scope.registerUsers=null;
+            $scope.infoMessage="The room "+ roomName +" was successfully created";
+            $scope.roomName="";
+            $scope.$apply();
+        }
+
     });

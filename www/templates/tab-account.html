@@ -10,11 +10,17 @@
                 </label>
                 <button class="button button-block button-positive" ng-click="login(mail, password)">Login</button>
                 <div align="center">
-                    <h4>Don't have account?</h4>
-                    <a href="#/signUp" class="button button-assertive">Sign up here</a>
+                    <br/>
+                    <a href="#/signUp" class="button button-block button-assertive">Create user</a>
+                </div>
+                <div align="center">
+                    <br/>
+                    <a href="#/createRoom" class="button button-block button-assertive">Create room</a>
                 </div>
             </div>
             <div class="card" ng-hide="showLoginForm">
+
+                <i class="icon ion-bug" ng-click="showNotificationPanel()" ></i>
                 <div class="item item-text-wrap">You are logged in as {{user.password.email}}</div>
                 <button class="button button-stable" ng-click="logout()" ng-hide="showLoginForm">Logout</button>
             </div>
