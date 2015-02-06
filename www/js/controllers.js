@@ -107,12 +107,29 @@ angular.module('starter.controllers', [])
             animation: 'slide-in-left'
         }).then(function(modal) {
                 $scope.modal = modal;
-            });
+
+                $scope.modal.closeModal= function() {
+                    $scope.modal.hide();
+                    $scope.modal.user.joinedInvitations = [];
+                };
+
+                $scope.modal.saveChanges=function() {
+                    $scope.modal.hide();
+                    console.log($scope.modal.user.joinedInvitations);
+                    $scope.modal.user.joinedInvitations = [];
+
+                }
+        });
 
         $scope.showNotificationPanel= function() {
-            console.log("open notifi...");
+           var authUserUid=fireBaseData.getAuthUser().uid;
+           var notifications=Users.getUserRoomInvitations(authUserUid);
+            notifications.$loaded().then(function(array) {
+                $scope.modal.notifications=notifications;
+            });
             $scope.modal.show();
         };
+
 
         // Logout method
         $scope.logout = function () {

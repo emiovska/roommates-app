@@ -18,11 +18,81 @@
                     <a href="#/createRoom" class="button button-block button-assertive">Create room</a>
                 </div>
             </div>
-            <div class="card" ng-hide="showLoginForm">
+            <div class="" ng-hide="showLoginForm">
 
-                <i class="icon ion-bug" ng-click="showNotificationPanel()" ></i>
-                <div class="item item-text-wrap">You are logged in as {{user.password.email}}</div>
-                <button class="button button-stable" ng-click="logout()" ng-hide="showLoginForm">Logout</button>
+                <!--<i class="icon ion-bug" ng-click="showNotificationPanel()" ></i>-->
+                <!--<div class="item item-text-wrap">You are logged in as {{user.password.email}}</div>-->
+                <!--<button class="button button-stable" ng-click="logout()" ng-hide="showLoginForm">Logout</button>-->
+                <div class="card padding-bottom">
+
+                    <div class="item item-avatar">
+                        <img src="http://www.tlemcen-electronic.com/forum/image.php?u=412&dateline=1412425679"/>
+
+                        <h2>Welcome, Elena Miovska</h2>
+
+                        <p>Edit your profile</p>
+
+                    </div>
+
+
+                    <div class="list">
+                        <div class="item item-divider item-positive">
+                            Available rooms to join
+                        </div>
+
+
+                        <label class="item item-radio">
+                            <input type="radio" name="group">
+                            <div class="item-content">
+                                FF10
+                            </div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio">
+                            <input type="radio" name="group">
+
+                            <div class="item-content">
+                                TT20
+                            </div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio">
+                            <input type="radio" name="group">
+
+                            <div class="item-content">
+                                TT20
+                            </div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio">
+                            <input type="radio" name="group">
+
+                            <div class="item-content">
+                                TT20
+                            </div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+
+                        <div class="item item-divider item-positive " style="text-align: right; border: 1px solid white">
+                         <button class="button-light"> Enter room &nbsp<i class="icon ion-chevron-right" style="float: right"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                        <div class="card" href="#">
+
+                            <button class="button button-clear button-positive" ng-click="showNotificationPanel() " style="float: left">
+                                <i class="icon ion-archive balanced"></i>  Room invitations
+                            </button>
+                            <button class="button button-clear button-positive" ng-click="showNotificationPanel()" style="float: right">
+                                <i class="icon ion-log-out assertive"></i>   Logout
+                            </button>
+                        </div>
+
+
+                </div>
+
             </div>
         </div>
 
