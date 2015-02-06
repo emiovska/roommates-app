@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\WebStormWorkspace\roomiesExpensesApp\www\templates\notificationPanel.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/services.js" afterPath="$PROJECT_DIR$/www/js/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tab-account.html" afterPath="$PROJECT_DIR$/www/templates/tab-account.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tab-chat.html" afterPath="$PROJECT_DIR$/www/templates/tab-chat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tabs.html" afterPath="$PROJECT_DIR$/www/templates/tabs.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="roomiesExpensesApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +23,7 @@
     <file path="/tab-twotabs.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421339045819" ignored="false" />
     <file path="/tab-account-login.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421340219272" ignored="false" />
     <file path="/signUp.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1422959867559" ignored="false" />
-    <file path="/tab-chat.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1423256115949" ignored="false" />
+    <file path="/tab-chat.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1423263335473" ignored="false" />
     <file path="/style.css" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1421778770384" ignored="false" />
     <file path="/createRoom.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1423085127610" ignored="false" />
     <file path="/notificationPanel.html" changelist="62f3c9ed-6cac-4aa7-9c64-14fe66c02155" time="1423058859225" ignored="false" />
@@ -53,26 +47,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="controllers.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="29" selection-start="1158" selection-end="1158" vertical-scroll-proportion="-19.04">
+            <state line="21" column="48" selection-start="795" selection-end="795" vertical-scroll-proportion="0.5719626">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tab-chat.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="tab-chat.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/tab-chat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="155" selection-start="814" selection-end="814" vertical-scroll-proportion="0.24952015">
+            <state line="26" column="158" selection-start="1706" selection-end="1706" vertical-scroll-proportion="-10.230769">
               <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#a#0;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h2#0;n#a#0;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h2#0;n#a#0;n#div#1;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ion-footer-bar#0;n#ion-view#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -285,7 +281,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -450,24 +446,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="29" selection-start="1158" selection-end="1158" vertical-scroll-proportion="-19.04">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/tab-chat.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="155" selection-start="814" selection-end="814" vertical-scroll-proportion="0.24952015">
+        <state line="26" column="158" selection-start="1706" selection-end="1706" vertical-scroll-proportion="-10.230769">
           <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#a#0;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#0;n#a#0;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#0;n#a#0;n#div#1;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ion-footer-bar#0;n#ion-view#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="48" selection-start="795" selection-end="795" vertical-scroll-proportion="0.5719626">
+          <folding />
         </state>
       </provider>
     </entry>

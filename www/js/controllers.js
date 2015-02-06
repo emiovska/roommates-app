@@ -20,7 +20,6 @@ angular.module('starter.controllers', [])
         $scope.set_align = function (message) {
             var authUserUid=AuthService.getCurrentUser().uid;
             if (message.userUid===authUserUid) {
-                console.log(message.userName);
                 return {'text-align': "right"};
             }
         };

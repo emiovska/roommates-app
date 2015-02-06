@@ -14,23 +14,19 @@
         <div class="container">
             <div ng-repeat="message in messages" ng-style="set_align(message)">
 
-                <div  ng-hide="chooseTamplete(message)" class="badge badge-stable" style="border-radius: 25px;!important;  padding: 0 !important; border: 1px solid white;">
-                    <a class="item item-avatar" href="#" style="background: transparent; border-color: transparent; overflow: inherit">
-                       <img src="http://www.autonetdealersolutions.com/images/solutions/relp/icon-live-video-chat.png"/>
+                <div  ng-hide="chooseTamplete(message)" class="badge badge-stable" style="border-radius: 25px;!important;  padding: 0 !important; border: 3px solid white">
+                    <a class="item item-avatar" href="#" style="background: transparent; border-color: transparent; overflow: inherit; padding-top: 7%; margin-bottom: -5%">
+                       <img src="http://main.eddr-informatics.com/wp-content/uploads/2014/02/icon-person-Apply.png" style="margin-top: -3%"/>
                         <p style="float: left !important;">{{message.userName}}</p>
                         <br/>
                         <h2 style="float: left !important;">{{message.message}}</h2>
                     </a>
                 </div>
 
-
-                    <!--<div ng-show="true" class="badge badge-positive"  style="float: right !important; display: inline">-->
-                        <!--{{message.message}}-->
-                    <!--</div>-->
-                <div  ng-show="chooseTamplete(message)" class="badge badge-positive item-icon-left" style="border-radius: 25px;!important; border: 1px solid white;">
-                    <a class="item item-icon" href="#" style="background: transparent; border-color: transparent; overflow: inherit;">
+                <div  ng-show="chooseTamplete(message)" class="badge badge-positive item-icon-left" style="border-radius: 25px;!important; height: 80% ">
+                    <a class="item" href="#" style="background: transparent; border-color: transparent; overflow: inherit; padding-top: 3%;padding-bottom: 3%; margin-bottom: -8%">
                         <!--<img src="http://www.autonetdealersolutions.com/images/solutions/relp/icon-live-video-chat.png"/>-->
-                        <h2 class="padding-bottom" style="float: left !important; color:white">{{message.message}}</h2>
+                        <h2 class="padding-bottom" style="color:white;">{{message.message}}</h2>
                     </a>
                 </div>
 
@@ -40,13 +36,15 @@
         </div>
     </ion-content>
 
-    <ion-footer-bar class="item-input-inset">
-        <label class="item-input-wrapper">
-            <i class="icon ion-chatbubble-working placeholder-icon"></i>
+    <ion-footer-bar class="row card item-input-inset" style="margin-left: -0.1%">
+
+        <label class="row item-input-wrapper">
             <input type="text" ng-model="message" placeholder="Type new message..." ng-focus="scrollDown()">
         </label>
-        <button class="button button-assertive" ng-click="sendNewMessage($event)">
-            Send
+        <button class="button button-clear" ng-click="sendNewMessage($event)">
+            <i class="icon ion-android-send positive"></i>
         </button>
+
+
     </ion-footer-bar>
 </ion-view>
