@@ -19,30 +19,33 @@ angular.module('starter.services', [])
         }
     })
 
-.factory('Chat', function($firebase,fireBaseData,$ionicScrollDelegate,$timeout) {
+.factory('Chat', function($firebase,fireBaseData,$ionicScrollDelegate,$timeout,AuthService) {
 
-   var authUser=fireBaseData.getAuthUser();
-   var refChat=new Firebase("https://shining-fire-7395.firebaseio.com/chat/"+ (authUser===null?'': authUser.uid));
-   var messages=$firebase(refChat).$asArray();
-
+   var chatRoom="https://shining-fire-7395.firebaseio.com/chatRooms";
+   var messages;
 
     return {
 
         allMessages: function() {
-            authUser=fireBaseData.getAuthUser();
-            refChat=new Firebase("https://shining-fire-7395.firebaseio.com/chat/"+ (authUser===null?'': authUser.uid));
-            messages=$firebase(refChat).$asArray();
-            refChat.endAt().limit(1).on('child_added', function(dataSnapshot) {
-                $timeout( function(){
-                    $ionicScrollDelegate.scrollBottom(true);
-                    console.log("timeout");
-                },100);
-            });
+            var currentRoom=AuthService.getCurrentRoom();
+            var refChatRoom=new Firebase(chatRoom+"/"+currentRoom+"/messages");
+            messages=$firebase(refChatRoom).$asArray();
+//            refChat.endAt().limit(1).on('child_added', function(dataSnapshot) {
+//                $timeout( function(){
+//                    $ionicScrollDelegate.scrollBottom(true);
+//                    console.log("timeout");
+//                },100);
+//            });
             return messages;
         },
-        createMessage: function(user,msg) {
+        createMessage: function(msg) {
+            var currentUser=AuthService.getCurrentUser();
+           // var currentRoom= AuthService.getCurrentRoom();
+           // var refChatRoom=new Firebase(chatRoom+"/"+currentRoom+"/messages");
+           // messages=$firebase(refChatRoom).$asArray();
             messages.$add({
-                by: user,
+                userName: currentUser.name,
+                userUid: currentUser.uid,
                 message: msg
             });
         }
@@ -73,6 +76,10 @@ angular.module('starter.services', [])
              //console.log(userNotifications);
             var notifications=$firebase(userNotifications).$asArray();
             return notifications;
+         },
+         getUserWithUid: function(uid) {
+            var authUser=new Firebase(refUsers+"/"+uid);
+            return $firebase(authUser).$asObject();
          }
      }
 })
@@ -87,4 +94,25 @@ angular.module('starter.services', [])
         }
     }
 
+})
+.factory("AuthService",function(){
+    var currentUser;
+    var currentRoom;
+        return {
+            loginIn: function(user){
+                currentUser=user;
+            },
+            enterRoom: function(roomName){
+                currentRoom=roomName;
+            },
+            logOut: function() {
+                currentRoom=null;
+            },
+            getCurrentUser: function(){
+                return currentUser;
+            },
+            getCurrentRoom: function() {
+                return currentRoom;
+            }
+        }
 });

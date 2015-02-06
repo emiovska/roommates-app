@@ -64,6 +64,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','f
                     }
                 }
             })
+            .state('tab.notifications', {
+                cache: false,
+                url: '/notifications',
+                views: {
+                    'tab-notifications': {
+                        templateUrl: 'templates/tab-notifications.html',
+                        controller: 'NotificationsCtrl'
+                    }
+                }
+            })
             .state('signUp', {
                 url: '/signUp',
                 templateUrl: 'templates/signUp.html',

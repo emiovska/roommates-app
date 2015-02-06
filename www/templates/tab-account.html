@@ -19,19 +19,14 @@
                 </div>
             </div>
             <div class="" ng-hide="showLoginForm">
-
-                <!--<i class="icon ion-bug" ng-click="showNotificationPanel()" ></i>-->
-                <!--<div class="item item-text-wrap">You are logged in as {{user.password.email}}</div>-->
-                <!--<button class="button button-stable" ng-click="logout()" ng-hide="showLoginForm">Logout</button>-->
                 <div class="card padding-bottom">
 
                     <div class="item item-avatar">
                         <img src="http://www.tlemcen-electronic.com/forum/image.php?u=412&dateline=1412425679"/>
-
-                        <h2>Welcome, Elena Miovska</h2>
-
-                        <p>Edit your profile</p>
-
+                        <h2>Welcome, {{user.name}}</h2>
+                        <button class="button button-small button-clear button-positive" ng-click="logout()">
+                            <i class="icon ion-power assertive"></i>   Logout
+                        </button>
                     </div>
 
 
@@ -74,23 +69,10 @@
                         </label>
 
                         <div class="item item-divider item-positive " style="text-align: right; border: 1px solid white">
-                         <button class="button-light"> Enter room &nbsp<i class="icon ion-chevron-right" style="float: right"></i>
-                            </button>
+                            <a ng-click="enterRoom()" class="button button-small button-balanced icon-right ion-chevron-right button-calm" href="#/tab/roommates">
+                                Enter room</a>
                         </div>
-
                     </div>
-
-                        <div class="card" href="#">
-
-                            <button class="button button-clear button-positive" ng-click="showNotificationPanel() " style="float: left">
-                                <i class="icon ion-archive balanced"></i>  Room invitations
-                            </button>
-                            <button class="button button-clear button-positive" ng-click="showNotificationPanel()" style="float: right">
-                                <i class="icon ion-log-out assertive"></i>   Logout
-                            </button>
-                        </div>
-
-
                 </div>
 
             </div>

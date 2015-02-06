@@ -1,16 +1,43 @@
 <ion-view view-title="Chat with your roommates">
     <ion-content>
-        <ion-list>
-            <ion-item class="item-remove-animate" ng-repeat="message in messages"
-                      type="item-text-wrap">
-                <!--<img ng-src="{{chat.face}}">-->
-                <a class="item item-icon-left">
-                    <i class="icon ion-person-stalker"></i>
-                    <h2>{{message.by}}</h2>
-                    <p>{{message.message}}</p>
-                </a>
-            </ion-item>
-        </ion-list>
+        <!--<ion-list>-->
+        <!--<ion-item class="item-remove-animate" ng-repeat="message in messages"-->
+        <!--type="item-text-wrap">-->
+        <!--&lt;!&ndash;<img ng-src="{{chat.face}}">&ndash;&gt;-->
+        <!--<a class="item item-icon-left">-->
+        <!--<i class="icon ion-person-stalker"></i>-->
+        <!--<h2>{{message.userName}}</h2>-->
+        <!--<p>{{message.message}}</p>-->
+        <!--</a>-->
+        <!--</ion-item>-->
+        <!--</ion-list>-->
+        <div class="container">
+            <div ng-repeat="message in messages" ng-style="set_align(message)">
+
+                <div  ng-hide="chooseTamplete(message)" class="badge badge-stable" style="border-radius: 25px;!important;  padding: 0 !important; border: 1px solid white;">
+                    <a class="item item-avatar" href="#" style="background: transparent; border-color: transparent; overflow: inherit">
+                       <img src="http://www.autonetdealersolutions.com/images/solutions/relp/icon-live-video-chat.png"/>
+                        <p style="float: left !important;">{{message.userName}}</p>
+                        <br/>
+                        <h2 style="float: left !important;">{{message.message}}</h2>
+                    </a>
+                </div>
+
+
+                    <!--<div ng-show="true" class="badge badge-positive"  style="float: right !important; display: inline">-->
+                        <!--{{message.message}}-->
+                    <!--</div>-->
+                <div  ng-show="chooseTamplete(message)" class="badge badge-positive item-icon-left" style="border-radius: 25px;!important; border: 1px solid white;">
+                    <a class="item item-icon" href="#" style="background: transparent; border-color: transparent; overflow: inherit;">
+                        <!--<img src="http://www.autonetdealersolutions.com/images/solutions/relp/icon-live-video-chat.png"/>-->
+                        <h2 class="padding-bottom" style="float: left !important; color:white">{{message.message}}</h2>
+                    </a>
+                </div>
+
+
+            </div>
+
+        </div>
     </ion-content>
 
     <ion-footer-bar class="item-input-inset">

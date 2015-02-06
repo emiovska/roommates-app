@@ -1,20 +1,38 @@
 angular.module('starter.controllers', [])
 
 
-    .controller('ChatsCtrl', function ($scope, Chat,$ionicScrollDelegate,$timeout) {
+    .controller('ChatsCtrl', function ($scope, Chat, AuthService, $ionicScrollDelegate, $timeout) {
 
 //        $timeout( function(){
 //            $ionicScrollDelegate.scrollBottom();
 //            console.log("contoller timeout");
 //        },100);
         console.log("chat contoller");
+       // var currentRoom=  AuthService.getCurrentRoom();
         $scope.messages = Chat.allMessages();
-
-        $scope.sendNewMessage=function(e) {
-                Chat.createMessage("Elena",$scope.message);
-                $scope.message='';
+       // $scope.userUid=AuthService.getCurrentUser().uid;
+        $scope.sendNewMessage = function (e) {
+            Chat.createMessage($scope.message);
+            $scope.message = '';
 
         };
+
+        $scope.set_align = function (message) {
+            var authUserUid=AuthService.getCurrentUser().uid;
+            if (message.userUid===authUserUid) {
+                console.log(message.userName);
+                return {'text-align': "right"};
+            }
+        };
+
+        $scope.chooseTamplete = function(message) {
+            var authUserUid=AuthService.getCurrentUser().uid;
+            if (message.userUid===authUserUid) {
+                return true
+            } else {
+                return false;
+            }
+        }
 
 
 
@@ -25,7 +43,7 @@ angular.module('starter.controllers', [])
 
 
     .controller('RoommatesCtrl', function ($scope, fireBaseData, $firebase) {
-       // console.log(fireBaseData.getAuthUser().uid);
+        // console.log(fireBaseData.getAuthUser().uid);
         $scope.expenses = $firebase(fireBaseData.refRoomMates()).$asArray();
         //console.log($scope.expenses);
         $scope.user = fireBaseData.ref().getAuth();
@@ -49,13 +67,17 @@ angular.module('starter.controllers', [])
         };
     })
 
-    .controller('AccountCtrl', function ($scope, fireBaseData, Users,$ionicModal) {
+    .controller('AccountCtrl', function ($scope, fireBaseData, Users, AuthService) {
         $scope.loginForm = true;
         $scope.showLoginForm = false; //Checking if user is logged in
 
-        $scope.user = fireBaseData.ref().getAuth();
-        if (!$scope.user) {
+        var user = fireBaseData.ref().getAuth();
+        if (!user) {
             $scope.showLoginForm = true;
+        }  else {
+            var authUser=Users.getUserWithUid(user.uid);
+            AuthService.loginIn(authUser);
+            $scope.user=authUser;
         }
         //Login method
         $scope.login = function (mail, password) {
@@ -64,8 +86,9 @@ angular.module('starter.controllers', [])
                 password: password
             }, function (error, authData) {
                 if (error === null) {
-                    console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
-                    $scope.user = fireBaseData.ref().getAuth();
+                    var authUser=Users.getUserWithUid(authData.uid);
+                    AuthService.loginIn(authUser);
+                    $scope.user=authUser;
                     $scope.showLoginForm = false;
                     $scope.$apply();
                 } else {
@@ -82,7 +105,7 @@ angular.module('starter.controllers', [])
                 password: password
             }, function (error) {
                 if (error === null) {
-                     //first sign in to get UID
+                    //first sign in to get UID
                     fireBaseData.ref().authWithPassword({
                         email: mail,
                         password: password
@@ -93,43 +116,18 @@ angular.module('starter.controllers', [])
                         }
                     });
 
-                $scope.infoMessage="User created successfully";
+                    $scope.infoMessage = "User created successfully";
                 } else {
-                    $scope.infoMessage=error.message;
+                    $scope.infoMessage = error.message;
                 }
                 $scope.$apply();
             });
-
         };
 
-        $ionicModal.fromTemplateUrl('templates/notificationPanel.html', {
-            scope: $scope,
-            animation: 'slide-in-left'
-        }).then(function(modal) {
-                $scope.modal = modal;
-
-                $scope.modal.closeModal= function() {
-                    $scope.modal.hide();
-                    $scope.modal.user.joinedInvitations = [];
-                };
-
-                $scope.modal.saveChanges=function() {
-                    $scope.modal.hide();
-                    console.log($scope.modal.user.joinedInvitations);
-                    $scope.modal.user.joinedInvitations = [];
-
-                }
-        });
-
-        $scope.showNotificationPanel= function() {
-           var authUserUid=fireBaseData.getAuthUser().uid;
-           var notifications=Users.getUserRoomInvitations(authUserUid);
-            notifications.$loaded().then(function(array) {
-                $scope.modal.notifications=notifications;
-            });
-            $scope.modal.show();
+        $scope.enterRoom=function() {
+             var currentRoom="FF1010";
+            AuthService.enterRoom(currentRoom);
         };
-
 
         // Logout method
         $scope.logout = function () {
@@ -138,28 +136,35 @@ angular.module('starter.controllers', [])
         };
     })
     .controller('CreateRoomCtrl', function ($scope, Users, ChatRooms) {
-       $scope.registerUsers=[];
-       $scope.users =Users.allUsers() ;
+        $scope.registerUsers = [];
+        $scope.users = Users.allUsers();
 
-        $scope.addItem=function(registerUser){
+        $scope.addItem = function (registerUser) {
             $scope.registerUsers.push(registerUser);
         }
 
-        $scope.delete=function(index){
+        $scope.delete = function (index) {
             $scope.registerUsers.splice(index, 1);
         }
 
-        $scope.createRoom=function(roomName) {
+        $scope.createRoom = function (roomName) {
             ChatRooms.createChatRoom(roomName);
-             for(var i=0;i<$scope.registerUsers.length;i++) {
-                 var user=$scope.registerUsers[i];
-                 Users.createRoomInvitation(roomName,user.uid);
-             }
+            for (var i = 0; i < $scope.registerUsers.length; i++) {
+                var user = $scope.registerUsers[i];
+                Users.createRoomInvitation(roomName, user.uid);
+            }
 
-            $scope.registerUsers=null;
-            $scope.infoMessage="The room "+ roomName +" was successfully created";
-            $scope.roomName="";
+            $scope.registerUsers = null;
+            $scope.infoMessage = "The room " + roomName + " was successfully created";
+            $scope.roomName = "";
             $scope.$apply();
         }
 
+    })
+    .controller('NotificationsCtrl', function ($scope, Users, fireBaseData) {
+       console.log("notificationsCTRl");
+        var authUserUid = fireBaseData.getAuthUser().uid;
+        var notifications = Users.getUserRoomInvitations(authUserUid);
+        console.log(notifications);
+        $scope.notifications = notifications;
     });

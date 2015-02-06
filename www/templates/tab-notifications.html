@@ -1,0 +1,18 @@
+<ion-view view-title="Room invitations">
+    <ion-content>
+
+         <div class="list">
+            <div ng-repeat="notification in notifications">
+                <a class="item item-avatar" href="#">
+                    <img src="http://www.apkdad.com/wp-content/uploads/2012/11/Paltalk-Video-Chat-Icon.png">
+                    <h2>{{notification.$id}}</h2>
+                    <div class="">
+                       <button class="button button-small button-positive padding-left padding-right">Join the room</button>
+                        <button class="button button-small button-stable">Discard the room</button>
+                    </div>
+
+                </a>
+            </div>
+         </div>
+    </ion-content>
+</ion-view>
