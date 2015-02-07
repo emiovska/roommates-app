@@ -32,37 +32,25 @@ angular.module('starter.controllers', [])
                 return false;
             }
         }
-
-
-
-//        $scope.remove = function (chat) {
-//            Chats.remove(chat);
-//        }
     })
 
 
-    .controller('RoommatesCtrl', function ($scope, fireBaseData, $firebase) {
-        // console.log(fireBaseData.getAuthUser().uid);
-        $scope.expenses = $firebase(fireBaseData.refRoomMates()).$asArray();
-        //console.log($scope.expenses);
-        $scope.user = fireBaseData.ref().getAuth();
+    .controller('RoommatesCtrl', function ($scope, fireBaseData, $firebase,Expenses,AuthService) {
+
+        $scope.expenses = Expenses.allExpenses();
+        $scope.chatRoom=AuthService.getCurrentRoom();
         $scope.addExpense = function (e) {
-            $scope.expenses.$add({
-                by: $scope.user.password.email,
-                label: $scope.label,
-                cost: $scope.cost
-            });
-            $scope.label = "";
-            $scope.cost = 0;
+            Expenses.createExpense($scope.expenseName,$scope.expensePrice);
+            $scope.expenseName = "";
+            $scope.expensePrice = 0;
         };
 
         $scope.getTotal = function () {
-            var i, rtnTotal = 0;
+            var i, expenseTotal = 0;
             for (i = 0; i < $scope.expenses.length; i = i + 1) {
-                if ($scope.expenses[i].by == $scope.user.password.email)
-                    rtnTotal = rtnTotal + $scope.expenses[i].cost;
+                    expenseTotal = expenseTotal + $scope.expenses[i].expensePrice;
             }
-            return rtnTotal;
+            return expenseTotal;
         };
     })
 
