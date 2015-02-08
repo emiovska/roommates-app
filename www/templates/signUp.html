@@ -1,18 +1,18 @@
 <ion-view title="Create user">
     <ion-content>
-            <div class="list">
+            <div class="list list-inset">
                 <label class="item item-input">
-                    <span class="input-label">Full name</span><input type="text" ng-model="name"/>
+                    <input type="text" ng-model="name" placeholder="Full name"/>
                 </label>
                 <label class="item item-input">
-                    <span class="input-label">Email</span><input type="text" ng-model="mail"/>
+                    </span><input type="text" ng-model="mail" placeholder="Mail"/>
                 </label>
                 <label class="item item-input">
-                    <span class="input-label">Password</span><input type="password" ng-model="password"/>
+                    <input type="password" ng-model="password" placeholder="Password"/>
                 </label>
                 <button class="button button-block button-assertive" ng-click="signUp(name,mail, password)">Sign up</button>
             </div>
-            <div class="card">
+            <div class="">
             <p>  {{infoMessage}} </p>
             </div>
 

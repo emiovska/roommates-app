@@ -3,21 +3,21 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-tabs class="tabs-icon-only tabs-color-active-positive">
+<ion-tabs class="tabs-icon-only tabs-color-active-positive" ng-controller="TabsCtrl" ng-class="{'tabs-item-hide': hideTabs}">
     <!--Chats Tab-->
-    <ion-tab title="Chat" icon="icon ion-chatbubble-working" href="#/tab/chat">
+    <ion-tab title="Chat" icon="icon ion-chatbubbles" href="#/tab/chat">
         <ion-nav-view name="tab-chat"></ion-nav-view>
     </ion-tab>
     <!-- Roommates' expenses-->
-    <ion-tab title="Roomies" icon="icon ion-pricetag" href="#/tab/roommates">
+    <ion-tab title="Roomies" icon="icon ion-document-text" href="#/tab/roommates">
         <ion-nav-view name="tab-roommates"></ion-nav-view>        
     </ion-tab>
     <!-- Account -->
-    <ion-tab title="Account" icon="icon ion-ios7-gear" href="#/tab/account"> 
+    <ion-tab title="Account" icon="icon ion-person" href="#/tab/account"> 
         <ion-nav-view name="tab-account"></ion-nav-view>        
     </ion-tab>
     <!--Notifications-->
-    <ion-tab title="Notification" icon="icon ion-person-stalker button-small padding-bottom"  href="#/tab/notifications"> 
+    <ion-tab ng-hide="true" title="Notification" icon="icon ion-home" ng-controller="NotificationsCtrl" badge="notificationCount()" badge-style="badge-assertive" href="#/tab/notifications"> 
         <ion-nav-view name="tab-notifications"></ion-nav-view>        
     </ion-tab>
 

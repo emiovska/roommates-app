@@ -1,5 +1,19 @@
 angular.module('starter.controllers', [])
 
+    .controller('TabsCtrl', function($scope, $rootScope, $state, AuthService) {
+        $rootScope.$on('$ionicView.beforeEnter', function() {
+            console.log($state.current.name);
+            $rootScope.hideTabs = false;
+
+            if ($state.current.name === 'tab.account') {
+                console.log("account");
+                    var authUser=AuthService.getCurrentUser();
+                    if(authUser==null)
+                         $rootScope.hideTabs = true;
+           }
+        });
+
+    })
 
     .controller('ChatsCtrl', function ($scope, Chat, AuthService, $ionicScrollDelegate, $timeout) {
 
@@ -81,7 +95,7 @@ angular.module('starter.controllers', [])
 
     })
 
-    .controller('AccountCtrl', function ($scope, fireBaseData, Users, AuthService,$ionicActionSheet,$location) {
+    .controller('AccountCtrl', function ($scope, fireBaseData, Users, AuthService,$ionicActionSheet,$location,$rootScope) {
         $scope.loginForm = true;
         $scope.showLoginForm = false; //Checking if user is logged in
         $scope.errorShow=false;
@@ -111,6 +125,8 @@ angular.module('starter.controllers', [])
                     $scope.user=authUser;
                     $scope.showLoginForm = false;
                     $scope.availableRooms= Users.getUserJoinedRooms(authData.uid);
+                    $rootScope.$broadcast("$ionicView.beforeEnter");
+                    $rootScope.$broadcast("updateNotifications");
                     $scope.$apply();
                 } else {
                     $scope.errorShow=true;
@@ -168,11 +184,8 @@ angular.module('starter.controllers', [])
 
        //enter room
         $scope.enterRoom=function(index) {
-             //var currentRoom="FF1010";
-//            AuthService.enterRoom(currentRoom);
            var roomName= $scope.availableRooms[index].$id;
             AuthService.enterRoom(roomName);
-
         };
 
         // Logout method
@@ -180,6 +193,8 @@ angular.module('starter.controllers', [])
             fireBaseData.ref().unauth();
             AuthService.logout();
             $scope.showLoginForm = true;
+            $rootScope.$broadcast("$ionicView.beforeEnter");
+
         };
     })
     .controller('CreateRoomCtrl', function ($scope, Users, ChatRooms) {
@@ -208,11 +223,26 @@ angular.module('starter.controllers', [])
         }
 
     })
-    .controller('NotificationsCtrl', function ($scope, Users, fireBaseData) {
+    .controller('NotificationsCtrl', function ($scope, Users, fireBaseData,AuthService) {
 
-        var authUserUid = fireBaseData.getAuthUser().uid;
-        var notifications = Users.getUserRoomInvitations(authUserUid);
+       var authUser=fireBaseData.getAuthUser();
+        var notifications=[];
+       if(authUser){
+            var authUserUid = fireBaseData.getAuthUser().uid;
+            notifications = Users.getUserRoomInvitations(authUserUid);
+       }
+
         $scope.notifications = notifications;
+
+        $scope.$on("updateNotifications", function(){
+            var authUserUid = fireBaseData.getAuthUser().uid;
+            notifications = Users.getUserRoomInvitations(authUserUid);
+            $scope.notificationCount();
+        })
+
+        $scope.notificationCount = function() {
+           return notifications.length;
+        }
 
         $scope.joinRoom= function(index) {
             var roomName=notifications[index].$id;
@@ -224,5 +254,5 @@ angular.module('starter.controllers', [])
             Users.discardRoom(roomName, authUserUid);
         };
 
-
     });
+ 

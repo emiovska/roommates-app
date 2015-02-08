@@ -10,6 +10,7 @@
                     </span><input type="password" ng-model="password" placeholder="password"/>
                 </label>
                 <button class="button button-block button-positive" ng-click="login(mail, password)">Login</button>
+
                 <div ng-show="errorShow">
                     <i class="icon ion-alert assertive padding"></i> {{errorMessage}}
                 </div>

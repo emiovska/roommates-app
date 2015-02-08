@@ -141,8 +141,8 @@ angular.module('starter.services', [])
         }
     })
     .factory("AuthService", function () {
-        var currentUser;
-        var currentRoom;
+        var currentUser=null;
+        var currentRoom=null;
         return {
             loginIn: function (user) {
                 currentUser = user;
