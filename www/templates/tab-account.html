@@ -1,23 +1,26 @@
 <ion-view title="Account">
     <ion-content>
-        <div ng-show="loginForm">
-            <div class="list" ng-show="showLoginForm">
+        <div ng-show="loginForm" class="">
+            <div class="list list-inset" ng-show="showLoginForm">
+
                 <label class="item item-input">
-                    <span class="input-label">Email</span><input type="text" ng-model="mail"/>
+                    <input type="text" ng-model="mail" placeholder="email"/>
                 </label>
                 <label class="item item-input">
-                    <span class="input-label">Password</span><input type="password" ng-model="password"/>
+                    </span><input type="password" ng-model="password" placeholder="password"/>
                 </label>
                 <button class="button button-block button-positive" ng-click="login(mail, password)">Login</button>
-                <div align="center">
-                    <br/>
-                    <a href="#/signUp" class="button button-block button-assertive">Create user</a>
+                <div ng-show="errorShow">
+                    <i class="icon ion-alert assertive padding"></i> {{errorMessage}}
                 </div>
+
                 <div align="center">
-                    <br/>
-                    <a href="#/createRoom" class="button button-block button-assertive">Create room</a>
+                     <p>Don't have account?<p>
+                    <button class="button button-outline button-assertive" ng-click="chooseSignUp()">Sign up</button>
                 </div>
+
             </div>
+
             <div class="" ng-hide="showLoginForm">
                 <div class="card padding-bottom">
 
@@ -29,48 +32,18 @@
                         </button>
                     </div>
 
-
                     <div class="list">
                         <div class="item item-divider item-positive">
                             Available rooms to join
                         </div>
-
-
-                        <label class="item item-radio">
+                        <a class="item item-radio" ng-repeat="room in availableRooms" ng-click="enterRoom($index)" href="#/tab/roommates">
                             <input type="radio" name="group">
                             <div class="item-content">
-                                FF10
+                                {{room.$id}}
                             </div>
                             <i class="radio-icon ion-checkmark"></i>
-                        </label>
-                        <label class="item item-radio">
-                            <input type="radio" name="group">
-
-                            <div class="item-content">
-                                TT20
-                            </div>
-                            <i class="radio-icon ion-checkmark"></i>
-                        </label>
-                        <label class="item item-radio">
-                            <input type="radio" name="group">
-
-                            <div class="item-content">
-                                TT20
-                            </div>
-                            <i class="radio-icon ion-checkmark"></i>
-                        </label>
-                        <label class="item item-radio">
-                            <input type="radio" name="group">
-
-                            <div class="item-content">
-                                TT20
-                            </div>
-                            <i class="radio-icon ion-checkmark"></i>
-                        </label>
-
-                        <div class="item item-divider item-positive " style="text-align: right; border: 1px solid white">
-                            <a ng-click="enterRoom()" class="button button-small button-balanced icon-right ion-chevron-right button-calm" href="#/tab/roommates">
-                                Enter room</a>
+                        </a>
+                        <div class="item item-divider item-positive">
                         </div>
                     </div>
                 </div>

@@ -5,10 +5,10 @@
             <div ng-repeat="notification in notifications">
                 <a class="item item-avatar" href="#">
                     <img src="http://www.apkdad.com/wp-content/uploads/2012/11/Paltalk-Video-Chat-Icon.png">
-                    <h2>{{notification.$id}}</h2>
+                    <h2 style="font-weight: bold">{{notification.$id}}</h2>
                     <div class="">
-                       <button class="button button-small button-positive padding-left padding-right">Join the room</button>
-                        <button class="button button-small button-stable">Discard the room</button>
+                       <button class="button button-small button-positive padding-left padding-right" ng-click="joinRoom($index)">Join the room</button>
+                        <button class="button button-small button-stable" ng-click="discardRoom($index)">Discard the room</button>
                     </div>
 
                 </a>

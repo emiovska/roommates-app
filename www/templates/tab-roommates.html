@@ -1,34 +1,37 @@
 <ion-view title="Roommates Expenses">
+
     <ion-content>
-        <div class="card" style="padding: 0; margin: 0.3%">
-            <div class="item item-avatar-left">
-                <!--https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/personal_loan-512.png-->
-                <img style="margin-top: 0.7%" src="https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/personal_loan-512.png">
-                <h2>Expenses for {{chatRoom}}</h2>
-                <div>
-                    <button class="button button-small button-positive">Clear expense</button>
-                    <button class="button button-small button-stable padding-left padding-right">Calculation</button>
-                </div>
+
+        <div class="item item-avatar-left">
+            <!--https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/personal_loan-512.png-->
+            <!--http://icons.kem-mobile.com/wp-content/uploads/2011/11/green_dollar_sign_908413.png-->
+            <img style="margin-top: 0.4%"
+                 src="http://www.iconarchive.com/download/i84590/custom-icon-design/flatastic-4/US-dollar.ico">
+            <h2>Expenses for {{chatRoom}}</h2>
+            <div>
+                <button class="button button-small button-stable" ng-click="clearExpenses()">Clear expense</button>
+                <button class="button button-small button-positive" ng-click="showTotalCost()">Get total cost</button>
             </div>
         </div>
 
-        <div class="list">
+
+        <div class="list padding-bottom">
             <div ng-repeat="expense in expenses.slice().reverse()">
                 <div class="item item-text-wrapper padding-top padding-bottom">
                     <h2 style="font-weight: bold">{{expense.expenseName}}</h2>
                     <span class="padding-left"> by {{expense.userName}}</span>
-                    <span class="badge badge-assertive margin-top">{{expense.expensePrice}}</span>
+                    <span class="badge badge-balanced margin-top">{{expense.expensePrice}}</span>
                 </div>
             </div>
         </div>
 
     </ion-content>
-    <ion-footer-bar class="row card item-input-inset" style="margin-left: -0.1%; margin-bottom: -0.1%">
+    <ion-footer-bar class="row card item-input-inset" style="margin-left: -0.1%; margin-bottom: 0.02%">
         <label class="col col-67 item-input-wrapper">
-            <input ng-model='expenseName' type='text' id='labelInput' placeholder='Type a new expense...' />
+            <input ng-model='expenseName' type='text' id='labelInput' placeholder='Type a new expense...'/>
         </label>
         <label class="col item-input-wrapper" style="margin-left: 0.5%">
-            <input ng-model='expensePrice' type="text" id="costInput" placeholder='$' />
+            <input ng-model='expensePrice' type="text" id="costInput" placeholder='$'/>
         </label>
         <button class="button button-clear" ng-click="addExpense($event)">
             <i class="icon ion-plus-circled positive"></i>

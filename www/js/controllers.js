@@ -10,7 +10,9 @@ angular.module('starter.controllers', [])
         console.log("chat contoller");
        // var currentRoom=  AuthService.getCurrentRoom();
         $scope.messages = Chat.allMessages();
-       // $scope.userUid=AuthService.getCurrentUser().uid;
+//        $scope.messages.$loaded(function(){
+//            $ionicScrollDelegate.scrollBottom(true);
+//        });
         $scope.sendNewMessage = function (e) {
             Chat.createMessage($scope.message);
             $scope.message = '';
@@ -35,7 +37,7 @@ angular.module('starter.controllers', [])
     })
 
 
-    .controller('RoommatesCtrl', function ($scope, fireBaseData, $firebase,Expenses,AuthService) {
+    .controller('RoommatesCtrl', function ($scope, fireBaseData,$ionicScrollDelegate, $firebase,Expenses,AuthService,$ionicPopup,ChatRooms) {
 
         $scope.expenses = Expenses.allExpenses();
         $scope.chatRoom=AuthService.getCurrentRoom();
@@ -45,19 +47,44 @@ angular.module('starter.controllers', [])
             $scope.expensePrice = 0;
         };
 
-        $scope.getTotal = function () {
+       var getTotal = function () {
             var i, expenseTotal = 0;
             for (i = 0; i < $scope.expenses.length; i = i + 1) {
-                    expenseTotal = expenseTotal + $scope.expenses[i].expensePrice;
+                    expenseTotal = expenseTotal + parseInt($scope.expenses[i].expensePrice);
             }
             return expenseTotal;
         };
+
+        //show total cost alert
+        $scope.showTotalCost = function() {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Total cost',
+                template: '<p style="text-align: center; font-size: 17px; font-weight: bold">'+getTotal()+'\$</p>'
+            });
+            alertPopup.then(function(res) {
+
+            });
+        };
+        // clear all expenses
+        $scope.clearExpenses = function() {
+            var confirmPopup = $ionicPopup.confirm({
+                title: 'Delete expenses',
+                template: 'Are you sure you want to clear all expenses?'
+            });
+            confirmPopup.then(function(res) {
+                if(res) {
+                   ChatRooms.clearExpenses();
+                }
+            });
+        }
+
+
     })
 
-    .controller('AccountCtrl', function ($scope, fireBaseData, Users, AuthService) {
+    .controller('AccountCtrl', function ($scope, fireBaseData, Users, AuthService,$ionicActionSheet,$location) {
         $scope.loginForm = true;
         $scope.showLoginForm = false; //Checking if user is logged in
-
+        $scope.errorShow=false;
         var user = fireBaseData.ref().getAuth();
         if (!user) {
             $scope.showLoginForm = true;
@@ -66,6 +93,12 @@ angular.module('starter.controllers', [])
             AuthService.loginIn(authUser);
             $scope.user=authUser;
         }
+
+        //get available rooms
+        if(AuthService.getCurrentUser()){
+            $scope.availableRooms= Users.getUserJoinedRooms(AuthService.getCurrentUser().$id);
+        }
+
         //Login method
         $scope.login = function (mail, password) {
             fireBaseData.ref().authWithPassword({
@@ -77,14 +110,36 @@ angular.module('starter.controllers', [])
                     AuthService.loginIn(authUser);
                     $scope.user=authUser;
                     $scope.showLoginForm = false;
+                    $scope.availableRooms= Users.getUserJoinedRooms(authData.uid);
                     $scope.$apply();
                 } else {
+                    $scope.errorShow=true;
+                    $scope.errorMessage=error.message;
+                    $scope.$apply();
                     console.log("Error authenticating user:", error);
                 }
             });
         };
 
         //Sign up methods
+         $scope.chooseSignUp = function() {
+             var actionSheet = $ionicActionSheet.show({
+                 buttons: [
+                     { text: '<h4 class="assertive">Create user</h4>' },
+                     { text: '<h4 class="assertive">Create room</h4>' }
+                 ],
+                 titleText: 'Choose sign up method',
+                 cancelText: 'Cancel',
+                 buttonClicked: function(index) {
+                    var nextPath= index==0 ? '/signUp' : '/createRoom';
+                     console.log(nextPath);
+                     $location.path(nextPath);
+
+                     return true;
+                 }
+             });
+
+         };
         $scope.signUp = function (name, mail, password) {
             var ref = fireBaseData.ref();
             ref.createUser({
@@ -111,14 +166,19 @@ angular.module('starter.controllers', [])
             });
         };
 
-        $scope.enterRoom=function() {
-             var currentRoom="FF1010";
-            AuthService.enterRoom(currentRoom);
+       //enter room
+        $scope.enterRoom=function(index) {
+             //var currentRoom="FF1010";
+//            AuthService.enterRoom(currentRoom);
+           var roomName= $scope.availableRooms[index].$id;
+            AuthService.enterRoom(roomName);
+
         };
 
         // Logout method
         $scope.logout = function () {
             fireBaseData.ref().unauth();
+            AuthService.logout();
             $scope.showLoginForm = true;
         };
     })
@@ -149,9 +209,20 @@ angular.module('starter.controllers', [])
 
     })
     .controller('NotificationsCtrl', function ($scope, Users, fireBaseData) {
-       console.log("notificationsCTRl");
+
         var authUserUid = fireBaseData.getAuthUser().uid;
         var notifications = Users.getUserRoomInvitations(authUserUid);
-        console.log(notifications);
         $scope.notifications = notifications;
+
+        $scope.joinRoom= function(index) {
+            var roomName=notifications[index].$id;
+            Users.joinRoom(roomName, authUserUid);
+        };
+
+        $scope.discardRoom=function(index) {
+            var roomName=notifications[index].$id;
+            Users.discardRoom(roomName, authUserUid);
+        };
+
+
     });

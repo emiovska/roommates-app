@@ -30,12 +30,11 @@ angular.module('starter.services', [])
                 var currentRoom = AuthService.getCurrentRoom();
                 var refChatRoom = new Firebase(chatRoom + "/" + currentRoom + "/messages");
                 messages = $firebase(refChatRoom).$asArray();
-//            refChat.endAt().limit(1).on('child_added', function(dataSnapshot) {
-//                $timeout( function(){
-//                    $ionicScrollDelegate.scrollBottom(true);
-//                    console.log("timeout");
-//                },100);
-//            });
+                refChatRoom.endAt().limit(1).on('child_added', function(dataSnapshot) {
+                $timeout( function(){
+                    $ionicScrollDelegate.scrollBottom(true);
+                },100);
+            });
                 return messages;
             },
             createMessage: function (msg) {
@@ -53,6 +52,7 @@ angular.module('starter.services', [])
     })
 
     .factory('Users', function ($firebase, fireBaseData) {
+        var usersUrl="https://shining-fire-7395.firebaseio.com/users";
         var refUsers = new Firebase("https://shining-fire-7395.firebaseio.com/users");
         var users = $firebase(refUsers).$asArray();
 
@@ -72,17 +72,36 @@ angular.module('starter.services', [])
                 });
             },
             getUserRoomInvitations: function (uid) {
-                var userNotifications = new Firebase(refUsers + "/" + uid + "/notification");
+                var userNotifications = new Firebase(usersUrl + "/" + uid + "/notification");
                 var notifications = $firebase(userNotifications).$asArray();
                 return notifications;
             },
+            getUserJoinedRooms: function(uid) {
+                var userRooms=new Firebase(usersUrl + "/"+ uid + "/rooms");
+                var rooms=$firebase(userRooms).$asArray();
+                return rooms;
+            },
             getUserWithUid: function (uid) {
-                var authUser = new Firebase(refUsers + "/" + uid);
+                var authUser = new Firebase(usersUrl + "/" + uid);
                 return $firebase(authUser).$asObject();
+            },
+            joinRoom: function(roomName,uid) {
+                //remove from notification
+                var removeNotification=new Firebase(usersUrl+ "/" + uid + "/notification"+ "/" + roomName);
+                removeNotification.remove();
+                //add to rooms
+                refUsers.child(uid).child("rooms").child(roomName).push({
+                    roomName: roomName
+                });
+
+            },
+            discardRoom: function(roomName, uid){
+                var removeNotification=new Firebase(usersUrl+ "/" + uid + "/notification"+ "/" + roomName);
+                removeNotification.remove();
             }
         }
     })
-    .factory('ChatRooms', function ($firebase, fireBaseData) {
+    .factory('ChatRooms', function ($firebase, fireBaseData, AuthService) {
         var refChatRooms = new Firebase("https://shining-fire-7395.firebaseio.com/chatRooms");
 
         return {
@@ -90,6 +109,11 @@ angular.module('starter.services', [])
                 refChatRooms.child(name).set({
                     active: "true"
                 });
+            },
+            clearExpenses: function () {
+                var roomName=AuthService.getCurrentRoom();
+                var deleteExpenses=new Firebase(refChatRooms+"/"+roomName +"/expenses");
+                deleteExpenses.remove();
             }
         }
 
@@ -126,8 +150,9 @@ angular.module('starter.services', [])
             enterRoom: function (roomName) {
                 currentRoom = roomName;
             },
-            logOut: function () {
+            logout: function () {
                 currentRoom = null;
+                currentUser=null;
             },
             getCurrentUser: function () {
                 return currentUser;
