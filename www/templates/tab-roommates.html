@@ -6,11 +6,11 @@
             <!--https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/personal_loan-512.png-->
             <!--http://icons.kem-mobile.com/wp-content/uploads/2011/11/green_dollar_sign_908413.png-->
             <img style="margin-top: 0.4%"
-                 src="http://www.iconarchive.com/download/i84590/custom-icon-design/flatastic-4/US-dollar.ico">
+                 src="https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/personal_loan-512.png">
             <h2>Expenses for {{chatRoom}}</h2>
             <div>
-                <button class="button button-small button-stable" ng-click="clearExpenses()">Clear expense</button>
-                <button class="button button-small button-positive" ng-click="showTotalCost()">Get total cost</button>
+                <button class="button button-small button-outline button-stable padding-left padding-right" ng-click="clearExpenses()">Clear expense</button>
+                <button class="button button-small button-outline button-positive padding-left padding-right" ng-click="showTotalCost()">Get total cost</button>
             </div>
         </div>
 
@@ -20,7 +20,7 @@
                 <div class="item item-text-wrapper padding-top padding-bottom">
                     <h2 style="font-weight: bold">{{expense.expenseName}}</h2>
                     <span class="padding-left"> by {{expense.userName}}</span>
-                    <span class="badge badge-balanced margin-top">{{expense.expensePrice}}</span>
+                    <span class="badge badge-positive margin-top">{{expense.expensePrice}}</span>
                 </div>
             </div>
         </div>

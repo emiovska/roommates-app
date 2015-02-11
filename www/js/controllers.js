@@ -1,15 +1,27 @@
 angular.module('starter.controllers', [])
 
-    .controller('TabsCtrl', function($scope, $rootScope, $state, AuthService) {
+    .controller('TabsCtrl', function($scope, $rootScope, $state, AuthService,$ionicPopup,$location) {
         $rootScope.$on('$ionicView.beforeEnter', function() {
-            console.log($state.current.name);
+
             $rootScope.hideTabs = false;
 
             if ($state.current.name === 'tab.account') {
-                console.log("account");
                     var authUser=AuthService.getCurrentUser();
                     if(authUser==null)
                          $rootScope.hideTabs = true;
+           }
+
+           if($state.current.name==='tab.chat' || $state.current.name==='tab.roommates'){
+               if(AuthService.getCurrentRoom()==null) {
+                   var alertPopup = $ionicPopup.alert({
+                       title: 'Warning',
+                       template: '<p style="text-align: center">Please choose a room</p>'
+                   });
+                   alertPopup.then(function(res) {
+                       $location.path('/account');
+                   });
+               }
+
            }
         });
 
@@ -47,12 +59,12 @@ angular.module('starter.controllers', [])
             } else {
                 return false;
             }
-        }
+        };
     })
 
 
     .controller('RoommatesCtrl', function ($scope, fireBaseData,$ionicScrollDelegate, $firebase,Expenses,AuthService,$ionicPopup,ChatRooms) {
-
+        var currentUserCost=0;
         $scope.expenses = Expenses.allExpenses();
         $scope.chatRoom=AuthService.getCurrentRoom();
         $scope.addExpense = function (e) {
@@ -60,6 +72,10 @@ angular.module('starter.controllers', [])
             $scope.expenseName = "";
             $scope.expensePrice = 0;
         };
+
+        $scope.expenses.$loaded(function(){
+          makeCalculation();
+        });
 
        var getTotal = function () {
             var i, expenseTotal = 0;
@@ -69,15 +85,83 @@ angular.module('starter.controllers', [])
             return expenseTotal;
         };
 
+        //d3 chart
+        var makeCalculation= function(){
+            var data=[];
+            var tmpExpenses=$scope.expenses;
+            for(var i=0;i<tmpExpenses.length;i++) {
+                if(data[tmpExpenses[i].userName]==null)
+                        data[tmpExpenses[i].userName]=parseInt(tmpExpenses[i].expensePrice);
+                else {
+                    var price=data[tmpExpenses[i].userName];
+                    data[tmpExpenses[i].userName]=price + parseInt(tmpExpenses[i].expensePrice);
+                }
+            }
+
+           currentUserCost=data[AuthService.getCurrentUser().name];
+
+            var formatedData=new Array();
+            for (var userName in data) {
+                var item=new Object();
+                item.userName=userName;
+                item.cost=data[userName];
+                formatedData.push(item);
+            }
+
+            $scope.expensesData=formatedData;
+        }
+
+        $scope.xFunction = function() {
+            return function(d) {
+                return d.userName;
+            };
+        }
+        $scope.yFunction = function() {
+            return function(d) {
+                return d.cost;
+            };
+        }
+        $scope.descriptionFunction = function(){
+            return function(d){
+                return d.userName;
+            }
+        }
+
         //show total cost alert
         $scope.showTotalCost = function() {
+            makeCalculation();
+            var countMembers=$scope.expensesData.length;
+            var amount=parseInt(currentUserCost - getTotal()/countMembers);
             var alertPopup = $ionicPopup.alert({
                 title: 'Total cost',
-                template: '<p style="text-align: center; font-size: 17px; font-weight: bold">'+getTotal()+'\$</p>'
+                template: '<div style="text-align: center">Current amount </div>'
+                         +'<div  ng-controller="RoommatesCtrl" style="text-align: center; font-weight: bold" ng-style="setColor()">'
+                         + (amount>0 ? '+' : '') + amount+'\$</div>'
+                         +'<div ng-controller="RoommatesCtrl" class="row">'
+                             +'<nvd3-pie-chart '
+                             +'data="expensesData" '
+                             +'id="exampleId" '
+                             +'width="1050" '
+                             +'height="950" '
+                             +'tooltips="true"'
+                             +'description="descriptionFunction()"'
+                             +'x="xFunction()" '
+                             +'y="yFunction()" >'
+                             +'<svg height="50"></svg>'
+                            +'</nvd3-pie-chart>'
+                         +'</div>'
             });
             alertPopup.then(function(res) {
-
             });
+        };
+
+        $scope.setColor=function() {
+            var countMembers=$scope.expensesData.length;
+            var amount=parseInt(currentUserCost - getTotal()/countMembers);
+            if(amount<0)
+              return {'color':'red'};
+            else
+               return {'color': 'black' };
         };
         // clear all expenses
         $scope.clearExpenses = function() {
